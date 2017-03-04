@@ -31,8 +31,15 @@ export class Page2 {
 
   itemTapped(event, item) {
     // That's right, we're pushing to ourselves!
-    this.navCtrl.push(Page2, {
-      item: item
-    });
+    // this.navCtrl.push(Page2, {
+    //   item: item
+    // });
+   //  var confirmPopup = $ionicPopup.confirm({
+   //   title: 'Consume Ice Cream',
+   //   template: 'Are you sure you want to eat this ice cream?'
+   // });
+   alert("Posted");
+
+
   }
 }

@@ -8,16 +8,74 @@
 </ion-header>
 
 <ion-content>
-  <ion-list>
-    <button ion-item *ngFor="let item of items" (click)="itemTapped($event, item)">
-      <ion-icon [name]="item.icon" item-left></ion-icon>
-      {{item.title}}
-      <div class="item-note" item-right>
-        {{item.note}}
-      </div>
-    </button>
+  <!-- <ion-list>
+    <label class="item item-input">
+
+        Item:
+        <span class="input-label"></span>
+        <input type="text">
+    </label>
+    <form id = "Description">
+        Description:
+        <textarea name="Describte the item" type = "text" form="Description"></textarea>
+
+    </form>
+
+
+  </ion-list> -->
+  <!-- <div class="list">
+   <label class="item item-input">
+       <input
+   <input type="text" placeholder="Placeholder 1">
+   </label>
+
+   <label class="item item-input">
+   <input type="text" placeholder="Placeholder 2">
+   </label> -->
+<!-- </div> -->
+<ion-list>
+  <ion-item>
+    <ion-label color="primary">Item</ion-label>
+    <ion-input placeholder="Item Name"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label color="primary">Description</ion-label>
+    <ion-textarea placeholder="Enter a description"></ion-textarea>
+  </ion-item>
+</ion-list>
+  <ion-list radio-group [(ngModel)]="Location">
+      <ion-list-header>
+          <h2 class="title">Location</h2>
+    </ion-list-header>
+      <ion-item>
+          <ion-label>Current Location</ion-label>
+          <ion-radio value="Current" checked></ion-radio>
+      </ion-item>
+      <ion-item>
+          <ion-label>Custom Location</ion-label>
+          <ion-radio value="Custom"></ion-radio>
+      </ion-item>
+
   </ion-list>
-  <div *ngIf="selectedItem" padding>
+  <ion-list>
+    <ion-item>
+      <ion-label color="primary">Phone Number</ion-label>
+      <ion-input placeholder="(XXX)-XXX-XXX"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label color="primary">Email</ion-label>
+      <ion-input placeholder="Enter you email"></ion-input>
+    </ion-item>
+
+  </ion-list>
+  <button ion-button>Cancel</button>
+  <button ion-button (click)="itemTapped($event, item)">
+     Post
+   </button>
+
+
+
+  <!-- <div *ngIf="selectedItem" padding>
     You navigated here from <b>{{selectedItem.title}}</b>
-  </div>
+  </div> -->
 </ion-content>
