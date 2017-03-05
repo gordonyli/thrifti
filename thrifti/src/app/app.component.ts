@@ -7,12 +7,13 @@ import { Page2 } from '../pages/page2/page2';
 import { BrowsePage } from '../pages/browse-page/browse-page'
 
 
+
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
-
+  
   rootPage: any = Page1;
 
   pages: Array<{title: string, component: any}>;
@@ -25,6 +26,7 @@ export class MyApp {
       { title: 'Page One', component: Page1 },
       { title: 'Page Two', component: Page2 },
       { title: 'Browse page', component: BrowsePage}
+
     ];
 
   }

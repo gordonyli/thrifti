@@ -11,6 +11,7 @@ import { BrowsePage } from '../pages/browse-page/browse-page'
     Page1,
     Page2,
     BrowsePage
+
   ],
   imports: [
     IonicModule.forRoot(MyApp)
