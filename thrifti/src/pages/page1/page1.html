@@ -1,4 +1,5 @@
 <ion-header>
+  <link href= "..browse-page/browse-page.html"/>
   <ion-navbar>
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
@@ -10,8 +11,8 @@
 <ion-content padding>
   <h3>Welcome to Thrifti</h3>
 
-  <button ion-button round>Post</button><br>
-  <button ion-button round onclick="alert('hello')">Browse</button><br>
+  <button ion-button round [navPush]="page2">Post</button><br>
+  <button ion-button round [navPush]="browsePage" >Browse</button><br>
   <button ion-button round>My Listings</button><br>
-
+<!--[navPush]="browse-page"-->
 </ion-content>
