@@ -9,52 +9,55 @@
 
 <ion-content>
   <!-- <ion-list>
-    <label class="item item-input">
+       <label class="item item-input">
 
-        Item:
-        <span class="input-label"></span>
-        <input type="text">
-    </label>
-    <form id = "Description">
-        Description:
-        <textarea name="Describte the item" type = "text" form="Description"></textarea>
+         Item:
+         <span class="input-label"></span>
+         <input type="text">
+       </label>
+       <form id = "Description">
+         Description:
+         <textarea name="Describte the item" type = "text" form="Description"></textarea>
 
-    </form>
+       </form>
 
 
   </ion-list> -->
   <!-- <div class="list">
-   <label class="item item-input">
-       <input
-   <input type="text" placeholder="Placeholder 1">
-   </label>
+       <label class="item item-input">
+         <input
+           <input type="text" placeholder="Placeholder 1">
+       </label>
 
-   <label class="item item-input">
-   <input type="text" placeholder="Placeholder 2">
-   </label> -->
-<!-- </div> -->
-<ion-list>
-  <ion-item>
-    <ion-label color="primary">Item</ion-label>
-    <ion-input placeholder="Item Name"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label color="primary">Description</ion-label>
-    <ion-textarea placeholder="Enter a description"></ion-textarea>
-  </ion-item>
-</ion-list>
+       <label class="item item-input">
+         <input type="text" placeholder="Placeholder 2">
+       </label> -->
+  <!-- </div> -->
+  <ion-list>
+    <ion-item>
+      <ion-label color="primary">Item</ion-label>
+      <ion-input placeholder="Item Name"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label color="primary">Description</ion-label>
+      <ion-textarea placeholder="Enter a description"></ion-textarea>
+    </ion-item>
+  </ion-list>
   <ion-list radio-group [(ngModel)]="Location">
-      <ion-list-header>
-          <h2 class="title">Location</h2>
+    <ion-list-header>
+      <ion-label color="primary"><h2 class="title">Pickup Location</h2></ion-label>
     </ion-list-header>
-      <ion-item>
-          <ion-label>Current Location</ion-label>
-          <ion-radio value="Current" checked></ion-radio>
-      </ion-item>
-      <ion-item>
-          <ion-label>Custom Location</ion-label>
-          <ion-radio value="Custom"></ion-radio>
-      </ion-item>
+    <!-- <ion-item> -->
+    <!--   <ion-label>Current Location</ion-label> -->
+    <!--   <ion-radio value="Current" checked></ion-radio> -->
+    <!-- </ion-item> -->
+    <!-- <ion-item> -->
+    <!--   <ion-label>Custom Location</ion-label> -->
+    <!--   <ion-radio value="Custom"></ion-radio> -->
+    <!-- </ion-item> -->
+    <ion-item>
+      <div #map id="map"></div>
+    </ion-item>
 
   </ion-list>
   <ion-list>
@@ -68,14 +71,14 @@
     </ion-item>
 
   </ion-list>
-  <button ion-button>Cancel</button>
+  <button ion-button (click)="alertData();">Cancel</button>
   <button ion-button (click)="itemTapped($event, item)">
-     Post
-   </button>
+    Post
+  </button>
 
 
 
   <!-- <div *ngIf="selectedItem" padding>
-    You navigated here from <b>{{selectedItem.title}}</b>
-  </div> -->
+       You navigated here from <b>{{selectedItem.title}}</b>
+       </div> -->
 </ion-content>
