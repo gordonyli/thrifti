@@ -3,14 +3,18 @@ import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { Page1 } from '../pages/page1/page1';
 import { Page2 } from '../pages/page2/page2';
-import { BrowsePage } from '../pages/browse-page/browse-page'
+import { BrowsePage } from '../pages/browse-page/browse-page';
+import { MainPage } from '../pages/main-page/main-page';
+import { LoginPage } from '../pages/login-page/login-page';
 
 @NgModule({
   declarations: [
     MyApp,
     Page1,
     Page2,
-    BrowsePage
+    BrowsePage,
+    MainPage,
+    LoginPage
 
   ],
   imports: [
@@ -21,7 +25,9 @@ import { BrowsePage } from '../pages/browse-page/browse-page'
     MyApp,
     Page1,
     Page2,
-    BrowsePage
+    BrowsePage,
+    MainPage,
+    LoginPage
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
 })
