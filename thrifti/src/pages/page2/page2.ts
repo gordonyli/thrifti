@@ -1,5 +1,6 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
 import { NavController, NavParams, AlertController } from 'ionic-angular';
+import { Geolocation } from 'ionic-native';
 
 declare var google;
 declare var marker;
@@ -70,6 +71,11 @@ export class Page2 {
             // console.log("CLICKED " + latitude + " :: " + longitude + " :: ");
             this.marker.setPosition(new google.maps.LatLng(latitude, longitude));
         });
+        Geolocation.getCurrentPosition().then((position) => {
+            let latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+            this.map.setCenter(latLng);
+            this.marker.setPosition(latLng);
+        })
     }
 
     alertData() {
