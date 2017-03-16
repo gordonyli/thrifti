@@ -3,13 +3,20 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Browse an Item</ion-title>
+    <ion-title>Browse Listings</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <h3>Browse an Item</h3>
   <ion-searchbar></ion-searchbar>
+  <ion-range min="1" max="100" [(ngModel)]="radius" (ionChange)="updateMapCircle();">
+    <ion-label range-left>1</ion-label>
+    <ion-label range-left>100</ion-label>
+  </ion-range>
+  <div #map id="map"></div>
+  <div text-center>
+    <button ion-button (click)="searchtest();">Search</button>
+  </div>
   <ion-item>
     <ion-img width="80" height="60" src="http://campuscouch.weebly.com/uploads/2/9/1/6/29169167/s728986760939583902_p2_i1_w500.jpeg"></ion-img>
     Couch
