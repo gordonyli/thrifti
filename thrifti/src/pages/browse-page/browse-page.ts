@@ -47,6 +47,18 @@ export class BrowsePage {
             center: this.map.getCenter(),
             radius: 1609.34 //One mile in meters
         });
+        google.maps.event.addListener(this.map, "click", (event) => {
+            var latitude = event.latLng.lat();
+            var longitude = event.latLng.lng();
+            this.marker.setPosition(new google.maps.LatLng(latitude, longitude));
+            this.circle.setCenter(new google.maps.LatLng(latitude, longitude));
+        });
+        google.maps.event.addListener(this.circle, "click", (event) => {
+            var latitude = event.latLng.lat();
+            var longitude = event.latLng.lng();
+            this.marker.setPosition(new google.maps.LatLng(latitude, longitude));
+            this.circle.setCenter(new google.maps.LatLng(latitude, longitude));
+        });
         Geolocation.getCurrentPosition().then((position) => {
             let latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
             this.map.setCenter(latLng);
