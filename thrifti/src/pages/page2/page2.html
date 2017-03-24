@@ -42,8 +42,6 @@
       <ion-label color="primary">Description</ion-label>
       <ion-textarea placeholder="Enter a description"></ion-textarea>
     </ion-item>
-  </ion-list>
-  <ion-list radio-group [(ngModel)]="Location">
     <ion-list-header>
       <ion-label color="primary"><h2 class="title">Pickup Location</h2></ion-label>
     </ion-list-header>
@@ -58,9 +56,15 @@
     <ion-item>
       <div #map id="map"></div>
     </ion-item>
-
-  </ion-list>
-  <ion-list>
+    <ion-item>
+      <h2 class="title" color="primary">Add image</h2>
+      <button ion-button (click)="takePicture(1)">Take Photo</button>
+      <button ion-button (click)="takePicture(0)">Library</button>
+    </ion-item>
+    <ion-item [hidden]="base64Image==null">
+      <h2 class="title" color="primary">Image Preview</h2>
+      <img [src]="base64Image" *ngIf="base64Image">
+    </ion-item>
     <ion-item>
       <ion-label color="primary">Phone Number</ion-label>
       <ion-input placeholder="(XXX)-XXX-XXX"></ion-input>

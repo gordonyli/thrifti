@@ -1,6 +1,6 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
-import { NavController, NavParams, AlertController } from 'ionic-angular';
-import { Geolocation } from 'ionic-native';
+import { NavController, NavParams, Platform, AlertController, LoadingController, Loading } from 'ionic-angular';
+import { Geolocation, Camera, File, Transfer, FilePath } from 'ionic-native';
 
 declare var google;
 declare var marker;
@@ -17,8 +17,10 @@ export class Page2 {
     marker: any;
     icons: string[];
     items: Array<{title: string, note: string, icon: string}>;
+    lastImage: any;
+    base64Image: any;
 
-    constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController) {
+    constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController, public loadingCtrl: LoadingController, public platform: Platform) {
         // If we navigated to this page, we will have an item available as a nav param
         this.selectedItem = navParams.get('item');
 
@@ -34,6 +36,42 @@ export class Page2 {
                 icon: this.icons[Math.floor(Math.random() * this.icons.length)]
             });
         }
+    }
+
+    takePicture(st) {
+        // var options = {
+        //     quality: 100,
+        //     sourceType: sourceType,
+        //     saveToPhotoAlbum: false,
+        //     correctOrientation: true
+        // };
+        Camera.getPicture({
+            destinationType: Camera.DestinationType.DATA_URL,
+            targetWidth: 500,
+            targetHeight: 500,
+            sourceType: st,
+            correctOrientation: true
+        }).then((imagedata) => {
+            this.base64Image = "data:image/jpeg;base64," + imagedata
+        }, (err) => {
+            console.log(err);
+        });
+        // Camera.getPicture(options).then((imagePath) => {
+        //     if (this.platform.is('android') && sourceType === Camera.PictureSourceType.PHOTOLIBRARY) {
+        //         FilePath.resolveNativePath(imagePath)
+        //             .then(filePath => {
+        //                 let correctPath = filePath.substr(0, filePath.lastIndexOf('/') + 1);
+        //                 let currentName = imagePath.substring(imagePath.lastIndexOf('/') + 1, imagePath.lastIndexOf('?'));
+        //                 this.copyFileToLocalDir(correctPath, currentName, this.createFileName());
+        //             });
+        //     } else {
+        //         var currentName = imagePath.substr(imagePath.lastIndexOf('/') + 1);
+        //         var correctPath = imagePath.substr(0, imagePath.lastIndexOf('/') + 1);
+        //         this.copyFileToLocalDir(correctPath, currentName, this.createFileName());
+        //     }
+        // }, (err) => {
+        //     console.log(err);
+        // })
     }
 
     itemTapped(event, item) {
