@@ -19,7 +19,7 @@ export class LoginPage {
         this.http.get(url).subscribe(res => {
             var result = res.text();
             if(result == "1") {
-                this.navCtrl.setRoot(MainPage);
+                this.navCtrl.setRoot(MainPage, {username: this.login.user});
             }
             else {
                 let alert = this.alertCtrl.create({
