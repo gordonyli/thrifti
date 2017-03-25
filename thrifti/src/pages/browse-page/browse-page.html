@@ -18,12 +18,11 @@
     <button ion-button (click)="searchtest();">Search</button>
   </div>
   <ion-list>
-    <ion-item [(ng-repeat)]="item in items">
+    <ion-item ng-repeat="item in dummylist">
       {{item}}
     </ion-item>
   </ion-list>
-
-
+  {{items[0]}}<br>
 
   <br><br><br>
   <ion-item>

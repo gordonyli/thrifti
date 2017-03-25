@@ -18,7 +18,7 @@ export class BrowsePage {
     radius: any;
     circle: any;
     test: any = "testing";
-    items: any;
+    items: any = {};
     dummylist: any = ["hello","my name is","gordon"];
 
     constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController, public http:Http) {
