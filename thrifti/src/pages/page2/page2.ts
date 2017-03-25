@@ -141,6 +141,13 @@ export class Page2 {
             }
             url2 = url2 + "/" + imgname;
             this.http.post(url2, "").subscribe(res => {
+                let alert = this.alertCtrl.create({
+                    title: 'Confirmation',
+                    subTitle: 'Item has been posted successfully!',
+                    buttons: ['OK']
+                });
+                alert.present();
+                this.navCtrl.pop();
             }, (err) => {
             })
         }, (err) => {
