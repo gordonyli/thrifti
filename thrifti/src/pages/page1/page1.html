@@ -8,10 +8,11 @@
 </ion-header>
 
 <ion-content padding>
-  <h3>Welcome to Thrifti</h3>
+  <h3>Welcome to Thrifti, {{username}}</h3>
 
   <button ion-button round [navPush]="page2">Post</button><br>
   <button ion-button round [navPush]="browsePage" >Browse</button><br>
   <button ion-button round>My Listings</button><br>
+  <button ion-button round [navPush]="settingsPage">Settings</button><br>
 <!--[navPush]="browse-page"-->
 </ion-content>
