@@ -2,6 +2,7 @@ import { Component, ViewChild, ElementRef } from '@angular/core';
 import { NavController, NavParams, AlertController } from 'ionic-angular';
 import { Geolocation } from 'ionic-native';
 import { Http } from '@angular/http';
+import { SearchItemPage } from '../search-item-page/search-item-page';
 
 declare var google;
 declare var marker;
@@ -18,10 +19,21 @@ export class BrowsePage {
     radius: any;
     circle: any;
     test: any = "testing";
-    items: any = {};
-    dummylist: any = ["hello","my name is","gordon"];
+    items: any = [];
+    response: any = [];
+    dummylist: any = [
+      {"name": "hello"},
+      {"name": "gordon"},
+      {"name": "bruck"}
+    ];
 
     constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController, public http:Http) {
+    }
+
+    doSearch() {
+      this.navCtrl.push(SearchItemPage, {
+        itemList: this.items
+      });
     }
 
     ionViewDidLoad() {
@@ -29,10 +41,17 @@ export class BrowsePage {
         this.getItems();
     }
 
+    generateArray(obj){
+      return Object.keys(obj).map((key)=>{ return obj[key]});
+    }
+
     getItems() {
       var url = "http://138.197.43.183:3000/api/item/all/";
       this.http.get(url).subscribe(res => {
-        this.items = res.json();
+        this.response = res.json();
+        for(var i = 0; i < this.response.length; i++) {
+          this.items.push(this.response[i]);
+        }
         console.log(this.items);
       }, (err) => {
         let alert = this.alertCtrl.create({

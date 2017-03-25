@@ -1,0 +1,18 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Search Item</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <ion-item *ngFor="let item of items">
+      <ion-img width="80" height="60" src="{{item.ImageURLs}}"></ion-img>
+      {{item.Title}}<br>
+      {{item.Description}}<br>
+    </ion-item>
+  </ion-list>
+</ion-content>
