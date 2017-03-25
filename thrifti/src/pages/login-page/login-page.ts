@@ -6,6 +6,7 @@ import { Http } from '@angular/http';
 import { MainPage } from '../main-page/main-page';
 
 @Component({
+    selector: "page-login",
     templateUrl: 'login-page.html'
 })
 export class LoginPage {
