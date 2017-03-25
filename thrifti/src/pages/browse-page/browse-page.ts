@@ -1,6 +1,7 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
 import { NavController, NavParams, AlertController } from 'ionic-angular';
 import { Geolocation } from 'ionic-native';
+import { Http } from '@angular/http';
 
 declare var google;
 declare var marker;
@@ -16,12 +17,31 @@ export class BrowsePage {
     marker: any;
     radius: any;
     circle: any;
+    test: any = "testing";
+    items: any;
+    dummylist: any = ["hello","my name is","gordon"];
 
-    constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController) {
+    constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController, public http:Http) {
     }
 
     ionViewDidLoad() {
         this.loadMap();
+        this.getItems();
+    }
+
+    getItems() {
+      var url = "http://138.197.43.183:3000/api/item/all/";
+      this.http.get(url).subscribe(res => {
+        this.items = res.json();
+        console.log(this.items);
+      }, (err) => {
+        let alert = this.alertCtrl.create({
+          title: 'Error',
+          subTitle: 'Thrifti encountered an error, please try to log in later.',
+          buttons: ['Dismiss']
+        });
+        alert.present();
+      });
     }
 
     loadMap() {
