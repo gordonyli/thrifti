@@ -122,7 +122,31 @@ export class Page2 {
         var url = "http://138.197.43.183:3000/api/image/upload";
         var headers = new Headers({'Content-Type': 'application/json'});
         var options = new RequestOptions({headers: headers});
-        console.log(this.params.get("id"))
+        console.log(this.params.get("id"));
+        if(this.userinput.Title == null || this.userinput.Title == "") {
+            this.alertCtrl.create({
+                title: 'Your post must have a title',
+                subTitle: '',
+                buttons: ['OK']
+            }).present();
+            return;
+        }
+        if(this.userinput.Description == null || this.userinput.Description == "") {
+            this.alertCtrl.create({
+                title: 'Your post must have a description',
+                subTitle: '',
+                buttons: ['OK']
+            }).present();
+            return;
+        }
+        if(this.base64Image == null) {
+            this.alertCtrl.create({
+                title: 'Must upload an image',
+                subTitle: '',
+                buttons: ['OK']
+            }).present();
+            return;
+        }
         this.http.post(url, JSON.stringify({data: this.base64Image}), options).subscribe(res => {
             var imgname = "http://138.197.43.183:3030/" + res.text();
             imgname = encodeURIComponent(imgname);
