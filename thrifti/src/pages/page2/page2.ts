@@ -1,6 +1,7 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
 import { NavController, NavParams, Platform, AlertController, LoadingController, Loading } from 'ionic-angular';
 import { Geolocation, Camera, File, Transfer, FilePath } from 'ionic-native';
+import { Http, Headers, RequestOptions } from '@angular/http';
 
 declare var google;
 declare var marker;
@@ -19,23 +20,9 @@ export class Page2 {
     items: Array<{title: string, note: string, icon: string}>;
     lastImage: any;
     base64Image: any;
+    userinput: any = {Title: "", Description: "", ShowEmail: false, ShowPhone: false};
 
-    constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController, public loadingCtrl: LoadingController, public platform: Platform) {
-        // If we navigated to this page, we will have an item available as a nav param
-        this.selectedItem = navParams.get('item');
-
-        // Let's populate this page with some filler content for funzies
-        this.icons = ['flask', 'wifi', 'beer', 'football', 'basketball', 'paper-plane',
-                      'american-football', 'boat', 'bluetooth', 'build'];
-
-        this.items = [];
-        for (let i = 1; i < 11; i++) {
-            this.items.push({
-                title: 'Item ' + i,
-                note: 'This is item #' + i,
-                icon: this.icons[Math.floor(Math.random() * this.icons.length)]
-            });
-        }
+    constructor(public navCtrl: NavController, public params: NavParams, public alertCtrl: AlertController, public loadingCtrl: LoadingController, public platform: Platform, public http:Http) {
     }
 
     takePicture(st) {
@@ -119,9 +106,44 @@ export class Page2 {
     alertData() {
         let alert = this.alertCtrl.create({
             title: 'Clicked coordinates',
-            subTitle: 'COORDINATES: ' + this.marker.getPosition(),
+            subTitle: 'COORDINATES: ' + this.marker.getPosition().lat(),
             buttons: ['OK']
         });
         alert.present();
+        let alert2 = this.alertCtrl.create({
+            title: 'User input',
+            subTitle: 'DATA: ' + JSON.stringify(this.userinput),
+            buttons: ['OK']
+        });
+        alert2.present();
+    }
+
+    submitPost() {
+        var url = "http://138.197.43.183:3000/api/image/upload";
+        var headers = new Headers({'Content-Type': 'application/json'});
+        var options = new RequestOptions({headers: headers});
+        console.log(this.params.get("id"))
+        this.http.post(url, JSON.stringify({data: this.base64Image}), options).subscribe(res => {
+            var imgname = "http://138.197.43.183:3030/" + res.text();
+            imgname = encodeURIComponent(imgname);
+            var url2 = "http://138.197.43.183:3000/api/item/new/" + this.params.get("id");
+            url2 = url2 + "/" + this.userinput.Title + "/" + this.userinput.Description;
+            url2 = url2 + "/" + Number(this.marker.getPosition().lat().toFixed(6)) + "/" + Number(this.marker.getPosition().lng().toFixed(6));
+            if(this.userinput.ShowPhone == true) {
+                url2 = url2 + "/1";
+            } else {
+                url2 = url2 + "/0";
+            }
+            if(this.userinput.ShowEmail == true) {
+                url2 = url2 + "/1";
+            } else {
+                url2 = url2 + "/0";
+            }
+            url2 = url2 + "/" + imgname;
+            this.http.post(url2, "").subscribe(res => {
+            }, (err) => {
+            })
+        }, (err) => {
+        });
     }
 }

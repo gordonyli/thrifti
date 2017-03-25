@@ -36,11 +36,11 @@
   <ion-list>
     <ion-item>
       <ion-label color="primary">Item</ion-label>
-      <ion-input placeholder="Item Name"></ion-input>
+      <ion-input placeholder="Item Name" [(ngModel)]=userinput.Title></ion-input>
     </ion-item>
     <ion-item>
       <ion-label color="primary">Description</ion-label>
-      <ion-textarea placeholder="Enter a description"></ion-textarea>
+      <ion-textarea placeholder="Enter a description" [(ngModel)]=userinput.Description></ion-textarea>
     </ion-item>
     <ion-list-header>
       <ion-label color="primary"><h2 class="title">Pickup Location</h2></ion-label>
@@ -57,6 +57,14 @@
       <div #map id="map"></div>
     </ion-item>
     <ion-item>
+      <ion-label color="primary">Show Phone Number</ion-label>
+      <ion-checkbox [(ngModel)]=userinput.ShowPhone></ion-checkbox>
+    </ion-item>
+    <ion-item>
+      <ion-label color="primary">Show Email</ion-label>
+      <ion-checkbox [(ngModel)]=userinput.ShowEmail></ion-checkbox>
+    </ion-item>
+    <ion-item>
       <h2 class="title" color="primary">Add image</h2>
       <button ion-button (click)="takePicture(1)">Take Photo</button>
       <button ion-button (click)="takePicture(0)">Library</button>
@@ -65,19 +73,11 @@
       <h2 class="title" color="primary">Image Preview</h2>
       <img [src]="base64Image" *ngIf="base64Image">
     </ion-item>
-    <ion-item>
-      <ion-label color="primary">Phone Number</ion-label>
-      <ion-input placeholder="(XXX)-XXX-XXX"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label color="primary">Email</ion-label>
-      <ion-input placeholder="Enter you email"></ion-input>
-    </ion-item>
 
   </ion-list>
   <div text-center>
     <button ion-button (click)="alertData();">Cancel</button>
-    <button ion-button (click)="itemTapped($event, item)">Post</button>
+    <button ion-button (click)="submitPost();">Post</button>
   </div>
 
 
