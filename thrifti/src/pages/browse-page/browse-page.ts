@@ -34,6 +34,8 @@ export class BrowsePage {
     }
 
     doSearch() {
+      this.items = [];
+      this.getItems();
       console.log("Latitude: " + this.lat);
       console.log("Longitude: " + this.long);
       console.log("Radius: " + this.radius);
@@ -46,7 +48,7 @@ export class BrowsePage {
 
     ionViewDidLoad() {
         this.loadMap();
-        this.getItems();
+        //this.getItems();
     }
 
     generateArray(obj){
@@ -54,7 +56,8 @@ export class BrowsePage {
     }
 
     getItems() {
-      var url = "http://138.197.43.183:3000/api/item/all"
+      var url = "http://138.197.43.183:3000/api/item/search/" +
+        this.lat + "/" + this.long + "/" + this.radius + "/" + this.search
       this.http.get(url).subscribe(res => {
         this.response = res.json();
         for(var i = 0; i < this.response.length; i++) {
