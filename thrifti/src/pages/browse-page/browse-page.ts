@@ -14,9 +14,12 @@ declare var marker;
 export class BrowsePage {
 
     @ViewChild('map') mapElement: ElementRef;
+    lat: any;
+    long: any;
+    search: any = "";
     map: any;
     marker: any;
-    radius: any;
+    radius: any = 1;
     circle: any;
     test: any = "testing";
     items: any = [];
@@ -31,9 +34,14 @@ export class BrowsePage {
     }
 
     doSearch() {
+      console.log("Latitude: " + this.lat);
+      console.log("Longitude: " + this.long);
+      console.log("Radius: " + this.radius);
+      console.log("Search Name: " + this.search);
       this.navCtrl.push(SearchItemPage, {
         itemList: this.items
       });
+
     }
 
     ionViewDidLoad() {
@@ -46,7 +54,7 @@ export class BrowsePage {
     }
 
     getItems() {
-      var url = "http://138.197.43.183:3000/api/item/all/";
+      var url = "http://138.197.43.183:3000/api/item/all"
       this.http.get(url).subscribe(res => {
         this.response = res.json();
         for(var i = 0; i < this.response.length; i++) {
@@ -56,7 +64,7 @@ export class BrowsePage {
       }, (err) => {
         let alert = this.alertCtrl.create({
           title: 'Error',
-          subTitle: 'Thrifti encountered an error, please try to log in later.',
+          subTitle: 'Thrifti encountered an error searching for items',
           buttons: ['Dismiss']
         });
         alert.present();
@@ -89,16 +97,22 @@ export class BrowsePage {
         google.maps.event.addListener(this.map, "click", (event) => {
             var latitude = event.latLng.lat();
             var longitude = event.latLng.lng();
+            this.lat = latitude;
+            this.long = longitude;
             this.marker.setPosition(new google.maps.LatLng(latitude, longitude));
             this.circle.setCenter(new google.maps.LatLng(latitude, longitude));
         });
         google.maps.event.addListener(this.circle, "click", (event) => {
             var latitude = event.latLng.lat();
             var longitude = event.latLng.lng();
+            this.lat = latitude;
+            this.long = longitude;
             this.marker.setPosition(new google.maps.LatLng(latitude, longitude));
             this.circle.setCenter(new google.maps.LatLng(latitude, longitude));
         });
         Geolocation.getCurrentPosition().then((position) => {
+            this.lat = position.coords.latitude;
+            this.long = position.coords.longitude;
             let latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
             this.map.setCenter(latLng);
             this.marker.setPosition(latLng);

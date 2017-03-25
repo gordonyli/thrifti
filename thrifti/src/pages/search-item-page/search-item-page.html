@@ -10,9 +10,11 @@
 <ion-content padding>
   <ion-list>
     <ion-item *ngFor="let item of items">
-      <ion-img width="80" height="60" src="{{item.ImageURLs}}"></ion-img>
-      {{item.Title}}<br>
-      {{item.Description}}<br>
+      <ion-img width="160" height="120" src="{{item.ImageURLs}}"></ion-img>
+      <div class="itemInfo">
+        <div class="itemName">{{item.Title}}</div>
+        <div class="itemDescription">{{item.Description}}</div>
+      </div><br>
     </ion-item>
   </ion-list>
 </ion-content>
