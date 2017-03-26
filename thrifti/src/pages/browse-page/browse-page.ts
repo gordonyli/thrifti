@@ -36,13 +36,6 @@ export class BrowsePage {
     doSearch() {
       this.items = [];
       this.getItems();
-      console.log("Latitude: " + this.lat);
-      console.log("Longitude: " + this.long);
-      console.log("Radius: " + this.radius);
-      console.log("Search Name: " + this.search);
-      this.navCtrl.push(SearchItemPage, {
-        itemList: this.items
-      });
 
     }
 
@@ -64,6 +57,13 @@ export class BrowsePage {
           this.items.push(this.response[i]);
         }
         console.log(this.items);
+          console.log("Latitude: " + this.lat);
+          console.log("Longitude: " + this.long);
+          console.log("Radius: " + this.radius);
+          console.log("Search Name: " + this.search);
+          this.navCtrl.push(SearchItemPage, {
+              itemList: this.items
+          });
       }, (err) => {
         let alert = this.alertCtrl.create({
           title: 'Error',
