@@ -19,9 +19,10 @@ export class Page1 {
     settingsPage = SettingsPage;
     username: any;
     myparams: any;
+    name: any;
     constructor(public navCtrl: NavController, public params: NavParams, public http: Http, public alertCtrl: AlertController) {
         this.username = params.get("username");
-        this.myparams = {username: params.get("username")};
+        this.myparams = {username: params.get("username"), name: params.get("name")};
         this.loadUserID();
     }
 
@@ -30,6 +31,7 @@ export class Page1 {
         this.http.get(url).subscribe(res => {
             var result = res.json().Id;
             this.myparams.id = result;
+            this.name = res.json().Name;
         }, (err) => {
             let alert2 = this.alertCtrl.create({
                 title: 'ERROR',

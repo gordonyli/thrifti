@@ -42,6 +42,7 @@ export class MainPage {
         this.http.get(url).subscribe(res => {
             var result = res.json().Id;
             this.myparams.id = result;
+            this.myparams.name = res.json().Name;
         }, (err) => {
             let alert2 = this.alertCtrl.create({
                 title: 'ERROR',
