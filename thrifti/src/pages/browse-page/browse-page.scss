@@ -1,8 +1,13 @@
 page-browsePage {
-    background-color: black;
+  .browse-page-content {
+    text-align: center !important;
+    background-color: #074868 !important;
+    color: white;
+    font-family: "Avenir Next";
     #map {
-        width: 100%;
-        height: 300px;
+      width: 100%;
+      height: 300px;
     }
+  }
 
 }

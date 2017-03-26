@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar color="menucolor">
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
@@ -7,7 +7,7 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content class="page2-content">
   <ion-list>
     <ion-item *ngFor="let item of items">
       <ion-img class="itemPicture" src="{{item.ImageURLs}}"></ion-img>

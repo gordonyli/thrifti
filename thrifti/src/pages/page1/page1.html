@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar color="menucolor">
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
@@ -7,12 +7,23 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <h3>Welcome to Thrifti, {{username}}</h3>
-
-  <button ion-button round [navPush]="page2" [navParams]="myparams">Post</button><br>
-  <button ion-button round [navPush]="browsePage" [navParams]="myparams">Browse</button><br>
-  <button ion-button round>My Listings</button><br>
-  <button ion-button round [navPush]="settingsPage" [navParams]="myparams">Settings</button><br>
+<ion-content class="page1-content">
+  <div class="welcometext">Welcome, {{username}}</div>
+  <ion-item [navPush]="page2" [navParams]="myparams">
+    <ion-icon class="switchIcons" ios="ios-add-circle-outline" md="md-add-circle"></ion-icon>
+    <div class="switchText">POST</div>
+  </ion-item>
+  <ion-item [navPush]="browsePage" [navParams]="myparams">
+    <ion-icon ios="ios-search" md="md-search"></ion-icon>
+    <div class="switchText">BROWSE</div>
+  </ion-item>
+  <ion-item>
+    <ion-icon ios="ios-trending-up" md="md-trending-up"></ion-icon>
+    <div class="switchText">MY LISTINGS</div>
+  </ion-item>
+  <ion-item [navPush]="settingsPage" [navParams]="myparams">
+    <ion-icon ios="ios-settings" md="md-settings"></ion-icon>
+    <div class="switchText">SETTINGS</div>
+  </ion-item>
 <!--[navPush]="browse-page"-->
 </ion-content>

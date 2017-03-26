@@ -1,13 +1,13 @@
 <ion-menu [content]="content">
-  <ion-header>
-    <ion-toolbar>
+  <ion-header color="menucolor" style="font-family: 'Avenir Next'; background-color: #17A5A5 !important;">
+    <ion-toolbar color="menucolor">
       <ion-title>Menu</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <ion-content>
+  <ion-content style="background-color: #17A5A5;">
     <ion-list>
-      <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
+      <button style="background-color: #17A5A5; color: white; text-transform: uppercase;" menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
         {{p.title}}
       </button>
     </ion-list>

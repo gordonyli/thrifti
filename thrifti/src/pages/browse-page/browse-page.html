@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar color="menucolor">
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
@@ -7,7 +7,7 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content class="browse-page-content">
   <ion-searchbar [(ngModel)]="search" placeholder="Enter Item Name"></ion-searchbar>
   <ion-range min="1" max="100" [(ngModel)]="radius" (ionChange)="updateMapCircle();">
     <ion-label range-left>1</ion-label>
@@ -15,6 +15,6 @@
   </ion-range>
   <div #map id="map"></div>
   <div text-center>
-    <button ion-button (click)="doSearch();">Search</button>
+    <button color="menucolor" ion-button (click)="doSearch();">Search</button>
   </div>
 </ion-content>

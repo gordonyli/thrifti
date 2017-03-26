@@ -1,15 +1,36 @@
 page-page1 {
-  text-align:center !important;
-  background-color: #074868;
-  color: white;
-  font-family: "Avenir Next";
-  ion-content {
-        margin: auto;
-        text-align: center;
+  ion-header {
+    background-color: #17A5A5;
+  }
+  .page1-content {
+    text-align: center !important;
+    background-color: #074868 !important;
+    color: white;
+    font-family: "Avenir Next";
+    .welcometext {
+      margin-top: 5%;
+      font-size: 2em;
+      font-weight: 400;
     }
-    /*
-    ion-icon {
-        color: white;
+    ion-item {
+      background-color: #074868;
+      color: white;
+      width: 96%;
+      .switchIcons {
+        display:inline-block;
+      }
+      .switchText {
+        margin-left: 2%;
+        display:inline-block;
+        width: 50%;
+      }
+      button {
+        background-color: transparent;
+        border: none;
+        outline: none;
+        box-shadow: none;
+      }
     }
-    */
+
+  }
 }

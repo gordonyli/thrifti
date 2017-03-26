@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar color="menucolor">
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
@@ -33,18 +33,17 @@
          <input type="text" placeholder="Placeholder 2">
        </label> -->
   <!-- </div> -->
-  <ion-list>
     <ion-item>
-      <ion-label color="primary">Item</ion-label>
+      <ion-label color="white">Item</ion-label>
       <ion-input placeholder="Item Name" [(ngModel)]=userinput.Title></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label color="primary">Description</ion-label>
+      <ion-label color="white">Description</ion-label>
       <ion-textarea placeholder="Enter a description" [(ngModel)]=userinput.Description></ion-textarea>
     </ion-item>
-    <ion-list-header>
-      <ion-label color="primary"><h2 class="title">Pickup Location</h2></ion-label>
-    </ion-list-header>
+    <ion-item>
+      <ion-label color="white"><h2 class="title">Pickup Location</h2></ion-label>
+    </ion-item>
     <!-- <ion-item> -->
     <!--   <ion-label>Current Location</ion-label> -->
     <!--   <ion-radio value="Current" checked></ion-radio> -->
@@ -57,27 +56,26 @@
       <div #map id="map"></div>
     </ion-item>
     <ion-item>
-      <ion-label color="primary">Show Phone Number</ion-label>
+      <ion-label color="white">Show Phone Number</ion-label>
       <ion-checkbox [(ngModel)]=userinput.ShowPhone></ion-checkbox>
     </ion-item>
     <ion-item>
-      <ion-label color="primary">Show Email</ion-label>
+      <ion-label color="white">Show Email</ion-label>
       <ion-checkbox [(ngModel)]=userinput.ShowEmail></ion-checkbox>
     </ion-item>
-    <ion-item>
-      <h2 class="title" color="primary">Add image</h2>
-      <button ion-button (click)="takePicture(1)">Take Photo</button>
-      <button ion-button (click)="takePicture(0)">Library</button>
+    <ion-item class="addimage">
+      <h2 class="title" color="white">Add Image</h2>
+      <button color="menucolor" ion-button (click)="takePicture(1)">Take Photo</button>
+      <button color="menucolor" ion-button (click)="takePicture(0)">Library</button>
     </ion-item>
     <ion-item [hidden]="base64Image==null">
-      <h2 class="title" color="primary">Image Preview</h2>
+      <h2 class="title" color="white">Image Preview</h2>
       <img [src]="base64Image" *ngIf="base64Image">
     </ion-item>
 
-  </ion-list>
-  <div text-center>
-    <button ion-button (click)="alertData();">Cancel</button>
-    <button ion-button (click)="submitPost();">Post</button>
+  <div text-center class="confirmbuttons">
+    <button color="menucolor" ion-button (click)="alertData();">Cancel</button>
+    <button color="menucolor" ion-button (click)="submitPost();">Post</button>
   </div>
 
 
