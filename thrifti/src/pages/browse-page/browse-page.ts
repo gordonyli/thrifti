@@ -66,11 +66,12 @@ export class BrowsePage {
         console.log(this.items);
       }, (err) => {
         let alert = this.alertCtrl.create({
-          title: 'Error',
-          subTitle: 'Thrifti encountered an error searching for items',
+          title: '',
+          subTitle: 'No items found',
           buttons: ['Dismiss']
         });
         alert.present();
+        this.navCtrl.pop()
       });
     }
 
