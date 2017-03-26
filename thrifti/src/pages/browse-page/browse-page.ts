@@ -71,7 +71,7 @@ export class BrowsePage {
           buttons: ['Dismiss']
         });
         alert.present();
-        this.navCtrl.pop()
+        // this.navCtrl.pop()
       });
     }
 
