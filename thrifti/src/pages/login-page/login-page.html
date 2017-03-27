@@ -6,7 +6,7 @@
   </div>
   <form (ngSubmit)="doLogin()">
       <ion-input class="userpass" type="text" [(ngModel)]="login.user" name="user" placeholder="Username"></ion-input>
-      <ion-input class="userpass" type="text" [(ngModel)]="login.pass" name="pass" placeholder="Password"></ion-input>
+      <ion-input class="userpass" type="password" [(ngModel)]="login.pass" name="pass" placeholder="Password"></ion-input>
     <br>
     <button class="submitButton" ion-button type="Submit">Login</button>
   </form>

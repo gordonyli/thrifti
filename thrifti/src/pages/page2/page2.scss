@@ -16,6 +16,12 @@ page-page2 {
     ion-item {
       background-color: #074868 !important;
       font-family: "Avenir Next";
+      ion-input {
+        color: white;
+      }
+      ion-textarea {
+        color: white;
+      }
 
     }
   .addimage {
