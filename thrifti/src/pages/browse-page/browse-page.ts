@@ -54,7 +54,10 @@ export class BrowsePage {
       this.http.get(url).subscribe(res => {
         this.response = res.json();
         for(var i = 0; i < this.response.length; i++) {
-          this.items.push(this.response[i]);
+            var temp = this.response[i];
+            temp.UserLat = this.lat;
+            temp.UserLong = this.long;
+          this.items.push(temp);
         }
         console.log(this.items);
           console.log("Latitude: " + this.lat);

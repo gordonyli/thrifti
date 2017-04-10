@@ -10,8 +10,7 @@
 <ion-content class="browse-page-content">
   <ion-searchbar [(ngModel)]="search" placeholder="Enter Item Name"></ion-searchbar>
   <ion-range min="1" max="100" [(ngModel)]="radius" (ionChange)="updateMapCircle();">
-    <ion-label range-left>Distance (mi): 1</ion-label>
-    <ion-label range-right>100</ion-label>
+    <ion-label range-left>Distance (mi): {{radius}}</ion-label>
   </ion-range>
   <div #map id="map"></div>
   <div text-center>

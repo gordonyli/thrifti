@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-navbar color="menucolor">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Item Detail</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="browse-page-content">
+  <ion-list>
+    <ion-item>
+      <h1 style="text-align: center;">{{data.Title}}</h1>
+    </ion-item>
+    <ion-item>
+      <button style="margin: 0 auto;" ion-button (click)="openDirections()">Directions</button>
+    </ion-item>
+    <ion-item>
+      <img [src]="data.ImageURLs">
+    </ion-item>
+    <ion-item>
+      <p>{{data.Description}}</p>
+    </ion-item>
+    <ion-item [hidden]="data.ShowPhone==0">
+      <ion-label>Contact Phone:</ion-label>
+      <ion-input [(ngModel)]="data.Phone"></ion-input>
+    </ion-item>
+    <ion-item [hidden]="data.ShowEmail==0">
+      <ion-label>Contact Email:</ion-label>
+      <ion-input [(ngModel)]="data.Email"></ion-input>
+    </ion-item>
+  </ion-list>
+</ion-content>
