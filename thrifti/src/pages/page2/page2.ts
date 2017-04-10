@@ -1,6 +1,7 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
 import { NavController, NavParams, Platform, AlertController, LoadingController, Loading } from 'ionic-angular';
-import { Geolocation, Camera, File, Transfer, FilePath } from 'ionic-native';
+import { Geolocation, File, Transfer, FilePath } from 'ionic-native';
+import { Camera, CameraOptions } from '@ionic-native/camera';
 import { Http, Headers, RequestOptions } from '@angular/http';
 
 declare var google;
@@ -8,7 +9,8 @@ declare var marker;
 
 @Component({
     selector: 'page-page2',
-    templateUrl: 'page2.html'
+    templateUrl: 'page2.html',
+    providers: [Camera]
 })
 export class Page2 {
 
@@ -22,7 +24,7 @@ export class Page2 {
     base64Image: any;
     userinput: any = {Title: "", Description: "", ShowEmail: false, ShowPhone: false};
 
-    constructor(public navCtrl: NavController, public params: NavParams, public alertCtrl: AlertController, public loadingCtrl: LoadingController, public platform: Platform, public http:Http) {
+    constructor(public navCtrl: NavController, public params: NavParams, public alertCtrl: AlertController, public loadingCtrl: LoadingController, public platform: Platform, public http:Http, public camera:Camera) {
     }
 
     takePicture(st) {
@@ -32,14 +34,17 @@ export class Page2 {
         //     saveToPhotoAlbum: false,
         //     correctOrientation: true
         // };
-        Camera.getPicture({
-            destinationType: Camera.DestinationType.DATA_URL,
+        this.camera.getPicture({
+            destinationType: this.camera.DestinationType.DATA_URL,
+            quality: 95,
+            encodingType: this.camera.EncodingType.JPEG,
+            mediaType: this.camera.MediaType.PICTURE,
             targetWidth: 500,
             targetHeight: 500,
             sourceType: st,
             correctOrientation: true
         }).then((imagedata) => {
-            this.base64Image = "data:image/jpeg;base64," + imagedata
+            this.base64Image = "data:image/jpeg;base64," + imagedata;
         }, (err) => {
             console.log(err);
         });
