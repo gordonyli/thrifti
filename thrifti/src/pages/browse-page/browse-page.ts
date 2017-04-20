@@ -124,7 +124,9 @@ export class BrowsePage {
             this.map.setCenter(latLng);
             this.marker.setPosition(latLng);
             this.circle.setCenter(latLng);
-        })
+        }, (err) => {
+            console.log(err);
+        });
     }
 
     searchtest() {

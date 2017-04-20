@@ -7,9 +7,9 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content class="page2-content">
-  <ion-list>
-    <button ion-item *ngFor="let item of items" (click)="viewDetails(item.Id)">
+<ion-content class="page-search-content">
+  <ion-list class="page-search-content">
+    <button ion-item *ngFor="let item of items" (click)="viewDetails(item.Id)" class="page-search-content">
       <ion-img class="itemPicture" src="{{item.ImageURLs}}"></ion-img>
       <div class="itemInfo">
         <div class="itemName">{{item.Title}}</div>
