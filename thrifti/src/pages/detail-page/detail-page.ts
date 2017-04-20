@@ -16,7 +16,8 @@ export class DetailPage {
     }
 
     openDirections() {
-        var browser = this.iab.create('https://www.google.com/maps/dir/\'' + this.data.UserLat + ',' + this.data.UserLong + '\'/\'' + this.data.Latitude + ',' + this.data.Longitude + '\'/');
+        var browser = this.iab.create('https://www.google.com/maps/dir/\'' + this.data.UserLat + ',' + this.data.UserLong + '\'/\'' + this.data.Latitude + ',' + this.data.Longitude + '\'/',
+                                      '_system', 'location=yes,toolbar=yes,closebuttoncaption=Back');
     }
 
 }
