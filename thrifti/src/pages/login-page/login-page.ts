@@ -4,6 +4,7 @@ import { Http } from '@angular/http';
 
 // import { Page1 } from '../page1/page1';
 import { MainPage } from '../main-page/main-page';
+import { RegisterPage } from '../register-page/register-page';
 
 @Component({
     selector: "page-login",
@@ -15,6 +16,9 @@ export class LoginPage {
     constructor(public navCtrl: NavController, public alertCtrl: AlertController, public http:Http) {
     }
 
+    gotoRegister() {
+        this.navCtrl.push(RegisterPage);
+    }
     doLogin() {
         var url = "http://138.197.43.183:3000/api/user/login/" + this.login.user + "/" + this.login.pass;
         this.http.get(url).subscribe(res => {

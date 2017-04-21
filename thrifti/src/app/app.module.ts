@@ -9,6 +9,7 @@ import { LoginPage } from '../pages/login-page/login-page';
 import { SettingsPage } from '../pages/settings-page/settings-page';
 import { SearchItemPage } from '../pages/search-item-page/search-item-page';
 import { DetailPage } from '../pages/detail-page/detail-page';
+import { RegisterPage } from '../pages/register-page/register-page';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { DetailPage } from '../pages/detail-page/detail-page';
     LoginPage,
     SettingsPage,
     SearchItemPage,
-    DetailPage
+    DetailPage,
+    RegisterPage
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -36,7 +38,8 @@ import { DetailPage } from '../pages/detail-page/detail-page';
     LoginPage,
     SettingsPage,
     SearchItemPage,
-    DetailPage
+    DetailPage,
+    RegisterPage
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
 })

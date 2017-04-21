@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-navbar color="menucolor">
+    <ion-title>Register Account</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="register-page-content">
+  <ion-item class="register-page-content">
+    <ion-label color="white" class="register-page-content">Username</ion-label>
+    <ion-input placeholder="Enter username" class="register-page-content" [(ngModel)]=userinput.username></ion-input>
+  </ion-item>
+  <ion-item class="register-page-content">
+    <ion-label color="white" class="register-page-content">Password</ion-label>
+    <ion-input placeholder="Enter password" class="register-page-content" [(ngModel)]=userinput.password></ion-input>
+  </ion-item>
+  <ion-item class="register-page-content">
+    <ion-label color="white" class="register-page-content">Name</ion-label>
+    <ion-input placeholder="Enter name" class="register-page-content" [(ngModel)]=userinput.name></ion-input>
+  </ion-item>
+  <ion-item class="register-page-content">
+    <ion-label color="white" class="register-page-content">Email</ion-label>
+    <ion-input placeholder="Enter email address" class="register-page-content" [(ngModel)]=userinput.email></ion-input>
+  </ion-item>
+  <ion-item class="register-page-content">
+    <ion-label color="white" class="register-page-content">Phone</ion-label>
+    <ion-input placeholder="Enter phone number" class="register-page-content" [(ngModel)]=userinput.phone></ion-input>
+  </ion-item>
+  <div text-center>
+    <button ion-button (click)="doRegister();" class="confirmbuttons">Register</button>
+  </div>
+</ion-content>

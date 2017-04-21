@@ -4,10 +4,11 @@
   <div class="loginText">
     THRIFTI
   </div>
-  <form (ngSubmit)="doLogin()">
+  <form>
       <ion-input class="userpass" type="text" [(ngModel)]="login.user" name="user" placeholder="Username"></ion-input>
       <ion-input class="userpass" type="password" [(ngModel)]="login.pass" name="pass" placeholder="Password"></ion-input>
     <br>
-    <button class="submitButton" ion-button type="Submit">Login</button>
+    <button class="submitButton" ion-button (click)="doLogin();">Login</button><br>
+    <button class="registerButton" ion-button (click)="gotoRegister();">Register</button>
   </form>
 </div>
