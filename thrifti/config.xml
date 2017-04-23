@@ -42,4 +42,5 @@
     <plugin name="cordova-plugin-file-transfer" spec="1.6.2" />
     <plugin name="cordova-plugin-filepath" spec="1.0.2" />
     <plugin name="cordova-plugin-inappbrowser" spec="~1.7.0" />
+    <plugin name="cordova-plugin-admobpro" spec="~2.28.3" />
 </widget>

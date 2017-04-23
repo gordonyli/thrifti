@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
+import { AdMob } from 'ionic-native';
 
-import { NavController, NavParams, AlertController } from 'ionic-angular';
+import { NavController, NavParams, AlertController, Platform } from 'ionic-angular';
 import { BrowsePage } from '../browse-page/browse-page';
 import { SettingsPage } from '../settings-page/settings-page';
 import { Page2 } from '../page2/page2';
@@ -14,13 +15,33 @@ enableProdMode();
     templateUrl: 'page1.html'
 })
 export class Page1 {
+    admobId: any;
     page2 = Page2;
     browsePage = BrowsePage;
     settingsPage = SettingsPage;
     username: any;
     myparams: any;
     name: any;
-    constructor(public navCtrl: NavController, public params: NavParams, public http: Http, public alertCtrl: AlertController) {
+    constructor(public platform: Platform, public navCtrl: NavController, public params: NavParams, public http: Http, public alertCtrl: AlertController) {
+        // // set up ads
+        // this.platform = platform;
+        // if(/(android)/i.test(navigator.userAgent)) {
+        //     this.admobId = 'ca-app-pub-1726770273132324/5274522897';
+        // } else {
+        //     this.admobId = 'ca-app-pub-1726770273132324/8227989298';
+        // }
+        // this.platform.ready().then(() => {
+        //     if(AdMob) {
+        //         AdMob.createBanner({
+        //             adId: this.admobId,
+        //             adSize: 'MEDIUM_RECTANGLE',
+        //             autoShow: true,
+        //             isTesting: true
+        //         }).then(() => {
+        //             AdMob.showBanner(8);
+        //         });
+        //     }
+        // });
         this.username = params.get("username");
         this.myparams = {username: params.get("username"), name: params.get("name")};
         this.loadUserID();
