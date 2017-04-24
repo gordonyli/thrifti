@@ -10,7 +10,7 @@
 <ion-content class="page-listings-content">
   <ion-list class="page-listings-content">
     <ion-item *ngFor="let item of myData" class="page-listings-content">
-      <div class="closeButton" (click)="deleteConfirm(item);"><b>Delete [x]</b></div>
+      <div class="closeButton" (click)="deleteConfirm(item);"><b>[X]</b></div>
       <ion-img class="itemPicture" src="{{item.ImageURLs}}"></ion-img>
       <div class="itemInfo">
         <div class="itemName">{{item.Title}}</div>

@@ -1,13 +1,10 @@
 import { Component, ViewChild } from '@angular/core';
 import { Nav, NavParams, Platform, AlertController } from 'ionic-angular';
+import { Http } from '@angular/http';
 // import { StatusBar, Splashscreen } from 'ionic-native';
 
+import { LoginPage } from '../login-page/login-page';
 import { Page1 } from '../page1/page1';
-import { Page2 } from '../page2/page2';
-import { BrowsePage } from '../browse-page/browse-page'
-import { SettingsPage } from '../settings-page/settings-page'
-import { Http } from '@angular/http';
-
 
 @Component({
     templateUrl: 'main-page.html'
@@ -23,10 +20,7 @@ export class MainPage {
         // used for an example of ngFor and navigation
         this.myparams = {username: params.get("username")};
         this.pages = [
-            { title: 'Home', component: Page1 },
-            { title: 'Post an Item', component: Page2 },
-            { title: 'Browse', component: BrowsePage},
-            { title: 'Settings', component: SettingsPage}
+            { title: 'Logout', component: LoginPage },
         ];
         this.loadUserID();
     }
