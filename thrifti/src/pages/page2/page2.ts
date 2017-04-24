@@ -128,6 +128,14 @@ export class Page2 {
         var headers = new Headers({'Content-Type': 'application/json'});
         var options = new RequestOptions({headers: headers});
         console.log(this.params.get("id"));
+        if(this.userinput.ShowPhone == false && this.userinput.ShowEmail == false) {
+            this.alertCtrl.create({
+                title: 'You must select at least one method of communication',
+                subTitle: '',
+                buttons: ['OK']
+            }).present();
+            return;
+        }
         if(this.userinput.Title == null || this.userinput.Title == "") {
             this.alertCtrl.create({
                 title: 'Your post must have a title',

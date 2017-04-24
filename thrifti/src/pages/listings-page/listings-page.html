@@ -10,12 +10,19 @@
 <ion-content class="page-listings-content">
   <ion-list class="page-listings-content">
     <ion-item *ngFor="let item of myData" class="page-listings-content">
-      <div class="closeButton" (click)="deleteConfirm(item);"><b>[X]</b></div>
-      <ion-img class="itemPicture" src="{{item.ImageURLs}}"></ion-img>
-      <div class="itemInfo">
-        <div class="itemName">{{item.Title}}</div>
-        <div class="itemDescription">{{item.Description}}</div>
-      </div><br>
+      <!-- <div class="closeButton" (click)="deleteConfirm(item);"><b>[X]</b></div> -->
+      <div class="closeButton">
+        <img (click)="deleteConfirm(item);" src="assets/images/delete.png">
+        <br><br><br><br>
+        <img src="assets/images/facebook.png">
+      </div>
+      <div (click)="gotoDetail(item)">
+        <ion-img class="itemPicture" src="{{item.ImageURLs}}"></ion-img>
+        <div class="itemInfo">
+          <div class="itemName">{{item.Title}}</div>
+          <div class="itemDescription">{{item.Description}}</div>
+        </div><br>
+      </div>
     </ion-item>
   </ion-list>
 </ion-content>

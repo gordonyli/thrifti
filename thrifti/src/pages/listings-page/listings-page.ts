@@ -2,6 +2,8 @@ import { Component} from '@angular/core';
 import { NavController, NavParams, AlertController } from 'ionic-angular';
 import { Http } from '@angular/http';
 
+import { DetailPage } from '../detail-page/detail-page';
+
 @Component({
     selector: 'page-listingsPage',
     templateUrl: 'listings-page.html'
@@ -56,5 +58,22 @@ export class ListingsPage {
                 }]
         });
         alert2.present();
+    }
+
+    gotoDetail(i) {
+        var url = "http://138.197.43.183:3000/api/user/id/" + i.UserId;
+        this.http.get(url).subscribe(res => {
+            var response = res.json();
+            i.Phone = response.Phone;
+            i.Email = response.Email;
+            this.navCtrl.push(DetailPage, {itemInfo: i});
+        }, (err) => {
+            let alert = this.alertCtrl.create({
+                title: 'Could not connect to Thrifti',
+                subTitle: 'Please check your Internet connection',
+                buttons: ['Dismiss']
+            });
+            alert.present();
+        });
     }
 }
