@@ -1,0 +1,26 @@
+page-listingsPage{
+  .page-listings-content {
+    background-color: #074868 !important;
+    color: white;
+    font-family: "Avenir Next";
+  }
+  .itemInfo {
+    margin-left: 1%;
+    display: inline-block;
+    vertical-align:top;
+    .itemName {
+      font-size: 1.3em;
+    }
+    .itemDescription {
+      width: 50%;
+    }
+  }
+  .itemPicture {
+    width: 160px;
+    height: 110px;
+  }
+  .closeButton {
+    float: right;
+    color: #ee4422;
+  }
+}

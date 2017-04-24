@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-navbar color="menucolor">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>My Listings</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="page-listings-content">
+  <ion-list class="page-listings-content">
+    <ion-item *ngFor="let item of myData" class="page-listings-content">
+      <div class="closeButton" (click)="deleteConfirm(item);"><b>Delete [x]</b></div>
+      <ion-img class="itemPicture" src="{{item.ImageURLs}}"></ion-img>
+      <div class="itemInfo">
+        <div class="itemName">{{item.Title}}</div>
+        <div class="itemDescription">{{item.Description}}</div>
+      </div><br>
+    </ion-item>
+  </ion-list>
+</ion-content>
